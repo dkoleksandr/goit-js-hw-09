@@ -20,14 +20,13 @@ function onChangeForm(event) {
   if (event.target.nodeName === 'INPUT') {
     email = `${event.target.value}`;
     message = document.querySelector('textarea').value;
-    console.log(typeof message);
   } else if (event.target.nodeName === 'TEXTAREA') {
     email = document.querySelector('input').value;
     message = `${event.target.value}`;
   }
 
   const data = {
-    email : email.trim(),
+    email: email.trim(),
     message: message.trim(),
   };
 
@@ -37,15 +36,20 @@ function onChangeForm(event) {
 function onSubmitForm(event) {
   event.preventDefault();
 
-  const inputValues = {
-    email: event.target.elements.email.value.trim(),
-    message: event.target.elements.message.value.trim(),
-  };
+  const emailValue = event.target.elements.email.value.trim();
+  const messageValue = event.target.elements.message.value.trim();
 
-  console.log(inputValues);
+  if (emailValue && messageValue) {
+    const inputValues = {
+      email: emailValue,
+      message: messageValue,
+    };
 
-  localStorage.removeItem('feedback-form-state');
+    console.log(inputValues);
 
-  document.querySelector('input').value = '';
-  document.querySelector('textarea').value = '';
+    localStorage.removeItem('feedback-form-state');
+
+    document.querySelector('input').value = '';
+    document.querySelector('textarea').value = '';
+  }
 }
