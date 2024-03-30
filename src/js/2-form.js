@@ -27,8 +27,8 @@ function onChangeForm(event) {
   }
 
   const data = {
-    email,
-    message,
+    email : email.trim(),
+    message: message.trim(),
   };
 
   localStorage.setItem('feedback-form-state', JSON.stringify(data));
@@ -38,8 +38,8 @@ function onSubmitForm(event) {
   event.preventDefault();
 
   const inputValues = {
-    email: event.target.elements.email.value,
-    message: event.target.elements.message.value,
+    email: event.target.elements.email.value.trim(),
+    message: event.target.elements.message.value.trim(),
   };
 
   console.log(inputValues);
