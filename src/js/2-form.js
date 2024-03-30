@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   const feedback = localStorage.getItem('feedback-form-state');
-
   if (feedback) {
     const formData = JSON.parse(feedback);
 
@@ -20,7 +19,10 @@ let message = '';
 function onChangeForm(event) {
   if (event.target.nodeName === 'INPUT') {
     email = `${event.target.value}`;
+    message = document.querySelector('textarea').value;
+    console.log(typeof message);
   } else if (event.target.nodeName === 'TEXTAREA') {
+    email = document.querySelector('input').value;
     message = `${event.target.value}`;
   }
 
@@ -43,6 +45,7 @@ function onSubmitForm(event) {
   console.log(inputValues);
 
   localStorage.removeItem('feedback-form-state');
+
   document.querySelector('input').value = '';
   document.querySelector('textarea').value = '';
 }
